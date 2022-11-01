@@ -1,0 +1,78 @@
+@use '../variables/colors' as *;
+
+.plans-page {
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  .plan {
+    .top {
+      border: 3px solid #fff;
+      outline: 3px solid transparent;
+    }
+    &.green .top {
+      outline-color: $greenColor;
+    }
+    &.orange .top {
+      outline-color: $orangeColor;
+    }
+    &.blue .top {
+      outline-color: $blueColor;
+    }
+    .price {
+      position: relative;
+      font-size: 32px;
+      width: fit-content;
+      margin: auto;
+      span {
+        position: absolute;
+        left: -20px;
+        top: 0;
+        font-size: 26px;
+      }
+    }
+    ul {
+      margin: 10px 0;
+      li {
+        padding: 15px 0;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        border-bottom: 1px solid #eee;
+        .yes {
+          color: $greenColor;
+        }
+        i {
+          position: relative;
+          transition: .8s;
+        }
+        i:hover:after {
+          content: 'This Access All Thing';
+          position: absolute;
+          width: 50px;
+          height: 25px;
+          top: -5px;
+          right: -80px;
+          background-color: #ddd;
+          border-radius: 4px;
+        }
+        i:not(.yes, .help) {
+          color: $redColor;
+        }
+        i:first-child {
+          font-size: 18px;
+          margin-right: 5px;
+        }
+        .help {
+          color: $greyColor;
+          margin-left: auto;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .plans-page {
+    grid-template-columns: minmax(230px, 1fr);
+    gap: 10px;
+    margin: 0 10px;
+  }
+}

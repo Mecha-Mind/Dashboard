@@ -1,0 +1,50 @@
+@use '../variables/colors' as *;
+
+.friends-page {
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  .contact {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    i {
+      background-color: #eee;
+      color: #666;
+      padding: 10px;
+      font-size: 13px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: .4s;
+      &:hover {
+        background-color: $blueColor;
+        color: #fff;
+      }
+    }
+  }
+  .icons {
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    padding: 15px 0;
+    i {
+      margin-right: 5px;
+    }
+    .vip {
+      position: absolute;
+      right: 0;
+      top:50%;
+      transform: translateY(-50%);
+      font-size: 34px;
+      opacity: .4;
+    }
+  }
+}
+
+
+@media (max-width: 767px) {
+  .friends-page {
+    grid-template-columns: minmax(200px, 1fr);
+    margin: 0 10px;
+    gap: 10px;
+  }
+}

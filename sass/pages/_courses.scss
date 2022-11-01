@@ -1,0 +1,39 @@
+@use '../variables/colors' as *;
+.courses-page {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    .course {
+      overflow: hidden;
+      .cover {
+        max-width: 100%;
+      }
+      .instructor {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+      }
+      .description {
+        line-height: 1.6;
+      }
+      .info {
+        border-top: 1px solid #eee;
+        .title {
+          position: absolute;
+          left: 50%;
+          top: -11px;
+          transform: translateX(-50%);
+          font-size: 12px;
+        }
+      }
+    }
+}
+@media (max-width: 767px) {
+  .courses-page {
+    grid-template-columns: minmax(200px, 1fr);
+    margin: 0 10px;
+    gap: 10px;
+  }
+}

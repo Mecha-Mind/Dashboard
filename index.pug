@@ -1,0 +1,273 @@
+include includes/vars
+include includes/mixins
+doctype html
+html(lang="en" dir="ltr")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    include includes/styles
+    title #{temp_name}
+  body
+    div(class="mainPage d-grid")
+      //- Start board
+      div(class="board bg-white p-20 p-rel")
+        h3(class="p-rel txt-c mt-0") #{name}
+        ul
+          li
+            a(class="active p-10 rad-6" href="index.html", target="_blank", rel="noopener noreferrer")
+              i(class="fa-brands fa-dashcube fa-fw")
+              span Dashboard
+          li
+            a(class="p-10 rad-6" href="settings.html", target="_blank", rel="noopener noreferrer")
+              i(class="fa-solid fa-gear fa-fw")
+              span Settings
+          li
+            a(class="p-10 rad-6" href="profile.html", target="_blank", rel="noopener noreferrer")
+              i(class="fa-regular fa-user fa-fw")
+              span Profile
+          li
+            a(class="p-10 rad-6" href="projects.html", target="_blank", rel="noopener noreferrer")
+              i(class="fa-solid fa-diagram-project fa-fw")
+              span Projects
+          li
+            a(class="p-10 rad-6" href="courses.html", target="_blank", rel="noopener noreferrer")
+              i(class="fa-solid fa-sheet-plastic fa-fw")
+              span Courses
+          li
+            a(class="p-10 rad-6" href="friends.html", target="_blank", rel="noopener noreferrer")
+              i(class="fa-solid fa-user-group fa-fw")
+              span Friends
+          li
+            a(class="p-10 rad-6" href="files.html", target="_blank", rel="noopener noreferrer")
+              i(class="fa-regular fa-file fa-fw")
+              span Files
+          li
+            a(class="p-10 rad-6" href="plans.html", target="_blank", rel="noopener noreferrer")
+              i(class="fa-regular fa-lightbulb fa-fw")
+              span Plans
+      //- End board
+      //- Start web Content 
+      div(class="web w-full")
+        //- Start Head
+        div(class="head bg-white between-flex p-10")
+          div(class="inp p-rel")
+            input(class="p-10" type="search", name="search" placeholder="Search Keyword")
+          div(class="logs d-flex al-c")
+            span(class="notif p-rel")
+              i(class="fa-regular fa-bell")
+            img(src="./imgs/land-pyke.jpg", alt="Img", srcset="")
+        //- End Head
+        h2(class="col p-rel") Dashboard
+        div(class="cap d-grid gap-20 mb-20")
+          //- Start Welcome Widget
+          div(class="welcome bg-white txt-c-mobile block-mobile rad-6")
+            div(class="head-line p-20 d-flex space-between bg-eee")
+              .title
+                h3(class="m-0") Welcome
+                p(class="c-grey mt-5") #{name}
+              img(class="hide-mobile" src="./imgs/land-pyke.jpg", alt="", srcset="")
+            img(class="avatar" src="./imgs/land-pyke.jpg", alt="", srcset="")
+            div(class="items txt-c d-flex p-20 mt-20 block-mobile")
+              .item #{name}
+                p(class="c-grey fs-14 mt-10") Developer
+              .item 80
+                p(class="c-grey fs-14 mt-10") Projects
+              .item 802420
+                p(class="c-grey fs-14 mt-10") Features
+            a(href="#" class="visit d-block p-10 fs-14 btn-shape bg-blue c-white w-fit") Profile
+          //- End Welcome Widget
+          //- Start Quick Draft Widget
+          div(class="quick-draft p-20 bg-white rad-6")
+            h2(class="mt-0 mb-20") Quick Draft
+            p(class="mt-0 mb-20 c-grey fs-14") Write A Draft For Your Ideas
+            form(action="")
+              input(class="d-block w-full mb-20 p-10 b-none bg-eee rad-6" type="text" placeholder="Title")
+              textarea(class="d-block w-full mb-20 p-10 b-none bg-eee rad-6" placeholder="Your Thought" name="txtarea")
+              input(class="save d-block w-fit fs-14 c-white bg-blue b-none btn-shape" type="submit", value="Save")
+          //- End Quick Draft Widget
+          //- Start Targets Widget
+          div(class="targets p-20 bg-white rad-6")
+            h2(class="mt-0 mb-20") Yearly Targets
+            p(class="mt-0 mb-20 c-grey fs-14") Targets Of The Year
+            +targets_row("blue", "fa-dollar-sign", "Money", "$20.000", "40%")
+            +targets_row("orange", "fa-code", "Projects", "10", "60%")
+            +targets_row("green", "fa-user", "Team", "3", "75%")
+          //- End Targets Widget
+          //- Start Tickets Widget
+          div(class="tickets p-20 bg-white rad-6")
+            h2(class="mt-0 mb-20") Tickets Statistics
+            p(class="mt-0 mb-20 c-grey fs-14") Everything About Support Tickets
+            div(class="d-flex txt-c gap-20 f-wrap")
+              +tickets_row("fa-regular fa-rectangle-list","orange", "2000", "Total")
+              +tickets_row("fa-solid fa-spinner","blue", "900", "Pending")
+              +tickets_row("fa-regular fa-circle-check","red", "1000", "Closed")
+              +tickets_row("fa-regular fa-rectangle-xmark","green", "100", "Deleted")
+          //- End Tickets Widget
+          //- Start Latest News
+          div(class="latest p-20 bg-white rad-6 txt-c-mobile")
+            h2(class="mt-0 mb-20") Latest News
+            +latest_news("./imgs/land-pyke.jpg",
+              "Created SASS Section",
+              "New SASS Exams And Tuts",
+              "3 Days Ago")
+            +latest_news("./imgs/land-pyke.jpg",
+              "Created SASS Section",
+              "New SASS Exams And Tuts",
+              "3 Days Ago")
+            +latest_news("./imgs/land-pyke.jpg",
+              "Created SASS Section",
+              "New SASS Exams And Tuts",
+              "3 Days Ago")
+          //- End Latest News
+          //- Start Tasks
+          div(class="tasks p-20 bg-white rad-6")
+            h2(class="mt-0 mb-20") Latest Tasks
+            +task-row("Record One New Video","Python Create Exe Project","fa-trash-can")
+            //- this div because class "done extra in one div"
+            div(class="task-row between-flex done")
+              .info
+                h3(class="mt-0 mb-5 fs-15") Record One New Video
+                p(class="m-0 c-grey") Python Create Exe Project
+              i(class=`fa-regular fa-trash-can delete`)
+            +task-row("Record One New Video","Python Create Exe Project","fa-trash-can")
+            +task-row("Record One New Video","Python Create Exe Project","fa-trash-can")
+            +task-row("Record One New Video","Python Create Exe Project","fa-trash-can")
+          //- End Tasks
+          //- Start Top Search Widget
+          div(class="top-search p-20 bg-white rad-6")
+            h2(class="mt-0 mb-20") Top Search Items
+            div(class="items-head d-flex space-between c-grey mb-10")
+              p Keyword
+              p Search Count
+            div(class="items d-flex space-between pt-15 pb-15")
+              span Programming
+              span(class="fs-13 bg-eee btn-shape") 280
+            div(class="items d-flex space-between pt-15 pb-15")
+              span JavaScript
+              span(class="fs-13 bg-eee btn-shape") 120
+            div(class="items d-flex space-between pt-15 pb-15")
+              span PHP
+              span(class="fs-13 bg-eee btn-shape") 140
+            div(class="items d-flex space-between pt-15 pb-15")
+              span Python
+              span(class="fs-13 bg-eee btn-shape") 220
+            div(class="items d-flex space-between pt-15 pb-15")
+              span Code
+              span(class="fs-13 bg-eee btn-shape") 150
+          //- End Top Search 
+          //- Start Latest Upload
+          div(class="latest-upload p-20 bg-white rad-6")
+            h2(class="mt-0 mb-20") Latest Upload
+            ul(class="m-0")
+              //- This Mixin Arguments => upload-row(src, filename, author, size)
+              +upload-row("imgs/land-pyke.jpg", "my-file.pdf", "Hani", "2.0 mb")
+              +upload-row("imgs/land-pyke.jpg", "my-file.pdf", "Momen", "4.1 mb")
+              +upload-row("imgs/land-pyke.jpg", "my-file.pdf", "Mohamed", "3.5 mb")
+          //- End Latest Upload
+          //- Start Last Project Widget
+          div(class="last-project p-20 bg-white rad-6 p-rel")
+            h2(class="mt-0 mb-20") Last Project
+            ul(class="m-0 p-rel")
+              li(class="mt-25 d-flex al-c done") Got The Project
+              li(class="mt-25 d-flex al-c done") Started The Project
+              li(class="mt-25 d-flex al-c done") The Project About Finish
+              li(class="mt-25 d-flex al-c current") Test The Project
+              li(class="mt-25 d-flex al-c") Finish It & Get Money
+            img(class="launch-ic hide-mobile" src="imgs/land-pyke.jpg", alt="", srcset="")
+          //- End Last Project Widget
+          //- Start Reminder
+          div(class="reminders p-20 bg-white rad-6 p-rel")
+            h2(class="mt-0 mb-25") Reminders
+            ul(class="m-0")
+              //- This Mixin Provide a reminder list => reminder-list(bgColor, color, head, body)
+              +reminder-list("bg-blue", "blue", "Check My Tasks List", "06/10/2022 - 06:00pm")
+              +reminder-list("bg-orange", "orange", "Check My Projects", "10/10/2022 - 06:00pm")
+              +reminder-list("bg-green", "green", "Check My Tasks List", "15/10/2022 - 06:00pm")
+              +reminder-list("bg-red", "red", "Check My Tasks List", "20/10/2022 - 06:00pm")
+          //- End Reminder
+          //- Start Latest Post
+          div(class="latest-post p-20 bg-white rad-6 p-rel")
+            h2(class="mt-0 mb-25") Latest Post
+            div(class="top d-flex al-c")
+              img(class="avatar rad-half mr-15" src="imgs/land-pyke.jpg", alt="", srcset="")
+              .info
+                p(class="mb-5 fw-bold") Mohamed Osman
+                span.c-grey About 2 Hours Ago
+            div(class="post-content txt-c-mobile pt-20 pb-20 mt-20 mb-20")
+              |You can fool all of the people some of the time, and some of the people all of the time, but you can't fool all of the people all of the time.
+            div(class="post-stats between-flex c-grey")
+              div
+                i(class="fa-regular fa-heart")
+                span  1.6k
+              div
+                i(class="fa-regular fa-comments")
+                span  480
+          //- End Latest Post
+          //- Start Social Media Widget
+          div(class="social-media p-20 bg-white rad-6 p-rel")
+            h2(class="mt-0 mb-25") Social Media
+            //- This Mixin Provide This Arguments => social-media(name, iconName, head, react)
+            +social-media-r("twitter", "fa-twitter", "20k Followers", "Follow")
+            +social-media-r("linkedin", "fa-linkedin", "20k Followers", "Follow")
+            +social-media-r("youtube", "fa-youtube", "12k Subs", "Subscribe")
+            +social-media-r("facebook", "fa-facebook-f", "15k Followers", "Like")
+          //- End Social Media Widget
+        //- Start Projects Table
+        div(class="projects p-20 bg-white rad-6 m-20")
+          h2(class="mt-0 mb-20") Projects
+          div(class="resp-table")
+            table(class="fs-15 w-full")
+              thead
+                tr
+                  td Name
+                  td Date
+                  td client
+                  td Price
+                  td Team
+                  td Status
+              tbody
+                //- This Mixin Provide Project Row With Arguments => project-rows(name, date, coName, prize, img, stColor, st) but Still Need To Fix Numbers Of Showen Photos
+                +project-rows(
+                  "Ministry Wikipedia",
+                  "10 Dec 2022",
+                  "Ministry",
+                  "$3000",
+                  "imgs/land-pyke.jpg",
+                  "orange", "Pending")
+                +project-rows(
+                  "Arena Application",
+                  "01 Jan 2023",
+                  "Arena Company",
+                  "$1500",
+                  "imgs/land-pyke.jpg",
+                  "green", "Completed")
+                +project-rows(
+                  "Ministry Wikipedia",
+                  "10 Dec 2022",
+                  "Ministry",
+                  "$3000",
+                  "imgs/land-pyke.jpg",
+                  "red", "Rejected")
+                +project-rows(
+                  "Ministry Wikipedia",
+                  "10 Dec 2022",
+                  "Ministry",
+                  "$3000",
+                  "imgs/land-pyke.jpg",
+                  "orange", "Pending")
+                tr
+                  td Arena Application
+                  td 01 Jan 2023
+                  td Arena Company
+                  td $1500
+                  td
+                    img(src="imgs/land-pyke.jpg", alt="", srcset="")
+                    img(src="imgs/land-pyke.jpg", alt="", srcset="")
+                    img(src="imgs/land-pyke.jpg", alt="", srcset="")
+                    img(src="imgs/land-pyke.jpg", alt="", srcset="")
+                    img(src="imgs/land-pyke.jpg", alt="", srcset="")
+                  td
+                    span(class="label btn-shape bg-green c-white") Completed
+        //- End Projects Table
+    include includes/scripts

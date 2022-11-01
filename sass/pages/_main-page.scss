@@ -1,0 +1,539 @@
+// include Variables colors
+@use '../variables/colors' as *;
+
+.mainPage {
+  @media (max-width: 767px) {
+    & {
+      grid-template-columns: 62px 1fr;
+    }
+  }
+  grid-template-columns: 200px 1fr;
+  min-height: 100vh;
+  background-color: #f1f5f9;
+  .board {
+    box-shadow: 0 0 10px #ddd;
+    & > h3 {
+      margin-bottom: 50px;
+      @media (min-width: 768px) {
+        &::before, &::after {
+          content: '';
+          position:absolute;
+          background-color: $dark;
+          transform: translateX(-50%);
+          left: 50%;
+        }
+        &::before{
+          width:70px;
+          height: 3px;
+          bottom: -20px;
+        }
+        &::after{
+          width:16px;
+          height: 16px;
+          border-radius: 50%;
+          bottom: -26.5px;
+        }
+      }
+    }
+    ul {
+      li {
+        a {
+          display: flex;
+          align-items: center;
+          transition: .3s;
+          margin-bottom: 5px;
+          color: $dark;
+          &:hover,
+          &.active {
+            background-color: $main;
+          }
+          span {
+            font-size: 14px;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  @media (max-width: 767px) {
+    & {
+      width: 62px;
+      padding: 10px;
+    }
+    & > h3 {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+    // & > h3::before, & > h3::after {
+    //   display: none;
+    // }
+    & ul li span {
+      display: none;
+    }
+  }
+  }
+  .web {
+    overflow: hidden;
+    .head {
+      .inp {
+        &::before {
+          font-family: var(--fa-style-family-classic);
+          content: "\f002";
+          font-weight: 900;
+          position: absolute;
+          left: 15px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 14px;
+          color: $greyColor;
+        }
+        input {
+          border: 1px solid #ccc;
+          border-radius: 10px;
+          text-indent: 10px;
+          padding-left: 30px;
+          margin-left: 5px;
+          width: 200px;
+          transition: width .3s;
+          @media (max-width: 767px) {
+            width: 105px;
+            padding-left: 20px;
+            text-indent: 5px;
+          }
+          &:focus {
+            width: 300px;
+            @media (max-width: 767px) {
+              width: 140px;
+            }
+          }
+          &:focus::placeholder {
+            opacity: 0;
+          }
+        }
+      }
+      .logs {
+        .notif::before {
+          content: '';
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          right: -5px;
+          top: -5px;
+          border-radius: 50%;
+          background-color: $redColor;
+        }
+        svg {
+          cursor: pointer;
+          font-size: 18px;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          margin-left: 15px;
+          cursor: pointer;
+        }
+      }
+    }
+    .col {
+      margin: 20px 20px 40px;
+      position: relative;
+      &::after,
+      &::before {
+        content: '';
+        position: absolute;
+        height: 3px;
+        left: 0;
+        bottom: -10px;
+      }
+      &::before {
+        width: 110px;
+        background-color: #fff;
+
+      }
+      &::after {
+        width: 40px;
+        background-color: #000;
+        left: 10px;
+      }
+    }
+    .cap {
+      grid-template-columns: repeat(auto-fill, minmax(450px,1fr));
+      margin: 0 20px;
+      @media (max-width: 767px) {
+        & {
+          grid-template-columns: minmax(200px,1fr);
+          margin: 0 10px;
+          gap: 10px;
+        }
+      }
+      .welcome {
+        overflow: hidden;
+        .head-line img {
+            max-width: 50%;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+        .avatar {
+          width: 64px;
+          height: 64px;
+          border: 2px solid #fff;
+          border-radius: 50%;
+          box-shadow: 0 0 7px #ddd;
+          margin-top: -32px;
+          margin-left: 20px;
+          padding: 2px;
+        }
+        .items {
+          border-top: 1px solid #eee;
+          border-bottom: 1px solid #eee;
+          .item {
+            flex: 1;
+          }
+        }
+        .visit {
+          margin: 5px 15px 15px auto;
+          transition: .4s;
+          &:hover {
+            background-color: $blueAlt;
+          }
+        }
+        @media (max-width: 767px) {
+          .head-line {
+            padding-bottom: 30px;
+          }
+          .avatar {
+            margin-left: 0;
+          }
+          .items > div:not(:last-child) {
+            margin-bottom: 20px;
+          }
+        }
+      }
+      .quick-draft {
+        textarea {
+          resize: none;
+          min-height: 150px;
+        }
+        .save {
+          margin-left: auto;
+          cursor: pointer;
+          transition: .4s;
+          &:hover{
+            background-color: $blueAlt;
+          }
+        }
+      }
+      .targets {
+        .target-row .icon {
+          width: 70px;
+          height: 70px;
+          margin-right: 15px;
+        }
+        .details {
+          flex: 1;
+          .progress {
+            height: 4px;
+            & > span {
+              position: absolute;
+              left: 0;
+              top: 0;
+              height: 100%;
+              & span {
+                position: absolute;
+                right: -16px;
+                bottom: 16px;
+                color: #fff;
+                padding: 2px 5px;
+                border-radius: 6px;
+                font-size: 12px;
+                &::after {
+                  content: '';
+                  position: absolute;
+                  border-color: transparent;
+                  border-width: 5px;
+                  border-style: solid;
+                  bottom: -10px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                }
+              }
+            }
+            & > .blue span {
+              border-top-color: $blueColor;
+            }
+            & > .orange span {
+              border-top-color: $orangeColor;
+            }
+            & > .green span {
+              border-top-color: $greenColor;
+            }
+          }
+        }
+        .blue .icon,
+        .blue .progress {
+          background-color: rgb(0 117 255 / 20%);
+        }
+        .orange .icon,
+        .orange .progress {
+          background-color: rgb(245 158 11 / 20%);
+        }
+        .green .icon,
+        .green .progress {
+          background-color: rgb(34 197 94 / 20%);
+        }
+        .red .icon,
+        .red .progress {
+          background-color: rgba(245, 88, 68, 0.2);
+        }
+      }
+      .tickets {
+        .box {
+          border: 1px solid #ccc;
+          width: calc(50% - 10px);
+          @media (max-width: 767px) {
+            & {
+              width: 100%;
+            }
+          }
+        }
+      }
+      .latest {
+        @media (max-width: 767px) {
+          .news-row {
+            display: block;
+            .label {
+              margin: 20px auto;
+              width: fit-content;
+            }
+          }
+        }
+        .news-row .info {
+          flex-grow: 1;
+          h3 {
+            margin: 0 0 6px;
+            font-size: 16px;
+          }
+        }
+        .news-row img{
+          width: 100px;
+          border-radius: 6px;
+          margin-right: 15px;
+        }
+        .news-row:not(:last-of-type) {
+          margin-bottom: 20px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid #eee;
+        }
+      }
+      // Start Tasks
+      .tasks {
+        .task-row:not(:last-of-type) {
+          margin-bottom: 15px;
+          padding-bottom: 15px;
+          border-bottom: 1px solid #eee;
+        }
+        .info {
+          flex-grow: 1;
+        }
+        .done {
+          opacity: 0.3;
+          h3, p {
+            text-decoration: line-through;
+          }
+        }
+        .delete {
+          cursor: pointer;
+          transition: .3s;
+          &:hover {
+            color: $redColor;
+          }
+        }
+      }
+      // End Tasks
+      // Start Uploads
+      .latest-upload {
+        ul {
+          li:not(:last-child) {
+            border-bottom: 1px solid #eee;
+          }
+          li img {
+            width: 45px;
+            height: 45px;
+          }
+        }
+      }
+      // End Uploads
+      // Start Last Project
+      .last-project {
+        ul {
+          &::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            width: 2px;
+            height: 100%;
+            background-color: $blueColor;
+          }
+          li::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            display: block;
+            border-radius: 50%;
+            background-color: #fff;
+            border: 2px solid #fff;
+            outline: 2px solid $blueColor;
+            margin-right: 15px;
+            z-index: 1;
+          }
+          li.done::before {
+            background-color: blue;
+            z-index: 4;
+          }
+          li.current::before {
+            animation: change-color .8s infinite alternate;
+          }
+        }
+        .launch-ic {
+          position: absolute;
+          width: 140px;
+          right: 20px;
+          bottom: 20px;
+          opacity: .2;
+        }
+      }
+      // End Last Project
+      // Start Reminders
+      .reminders {
+        ul {
+          li .key {
+            width: 15px;
+            height: 15px;
+          }
+          li > .blue {
+            border-left: 2px solid $blueColor;
+          }
+          li > .orange {
+            border-left: 2px solid $orangeColor;
+          }
+          li > .green {
+            border-left: 2px solid $greenColor;
+          }
+          li > .red {
+            border-left: 2px solid $redColor;
+          }
+        }
+      }
+      // End Reminders
+      // Start Latest Post
+      .latest-post {
+        .avatar {
+          width: 48px;
+          height: 48px;
+        }
+        .post-content {
+          text-transform: capitalize;
+          line-height: 1.8;
+          border-top: 1px solid #eee;
+          border-bottom: 1px solid #eee;
+          min-height: 140px;
+        }
+      }
+      // End Latest Post
+      // Start Social Media
+      .social-media {
+        .box {
+          padding-left: 70px;
+          i {
+            position: absolute;
+            width: 52px;
+            top: 0;
+            left: 0;
+            transition: .3s;
+            &:hover {
+              transform: rotate(5deg);
+            }
+          }
+        }
+        .twitter {
+          background-color: rgba(29, 161, 242, .2);
+          color: #1da1f2;
+          i, a {
+          background-color: #1da1f2;
+          }
+        }
+        .linkedin {
+          background-color: rgba(0, 119, 181, .2);
+          color: rgb(0, 119, 181);
+          i, a {
+          background-color: #0077b5;
+          }
+        }
+        .youtube {
+          background-color: rgba(255, 0, 0, .2);
+          color: rgb(255, 0, 0);
+          i, a {
+          background-color: #ff0000;
+          }
+        }
+        .facebook {
+          background-color: rgba(24, 119, 242, .2);
+          color: rgb(24, 119, 242);
+          i, a {
+          background-color: #1877f2;
+          }
+        }
+      }
+      // End Social Media
+      // Start Animation
+      @keyframes change-color {
+        from {
+          background-color: blue;
+        }
+        to {
+          background-color: #fff;
+        }
+      }
+      // End Animation
+    }
+    // Start Projects Table
+    .projects {
+      .resp-table {
+        overflow-x: auto;
+      }
+      table {
+        min-width: 1000px;
+        border-spacing: 0;
+        thead td {
+          background-color: #eee;
+          font-weight: bold;
+        }
+        td {
+          padding: 15px;
+        }
+        tbody tr:hover {
+          background-color: #Faf7f7;
+        }
+        tbody td {
+          border-bottom: 1px solid #eee;
+          border-left: 1px solid #eee;
+          transition: .3s;
+          &:last-child {
+            border-right: 1px solid #eee;
+          }
+        }
+        img {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          padding: 2px;
+          background-color: #fff;
+          &:not(:first-child) {
+            margin-left: -15px;
+          }
+        }
+      }
+    }
+          // End Projects Table
+  }
+}
